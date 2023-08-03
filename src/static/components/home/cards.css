@@ -1,0 +1,45 @@
+.cards {
+    max-width: 350px;
+    height: 450px;
+    width: 400px;
+    position: relative;
+    /* margin: 10px 0; */
+}
+
+.cards:hover {
+    /* border: 1px solid black; */
+}
+
+.card_img_cont {
+    height: 250px;
+}
+
+.card_title_cont {
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card_btn {
+    width: 100%;
+}
+
+.card_info_btn {
+    width: 100%;
+    border: none;
+}
+
+.card_info_btn:hover {
+    height: 30px;
+}
+
+.card_btn {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    text-align: center;
+    padding: 5px;
+}
