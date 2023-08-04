@@ -1,21 +1,22 @@
-require('dotenv').config()
+const test = require('dotenv').config()
+// console.log(test)
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
 const bodyParser = require("body-parser");
 const Razorpay = require("razorpay");
-const cors = require("cors");
+// const cors = require("cors");
 
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
 
 app.use(express.static("./frontend"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
+console.log("cred", process.env.KEY_ID, process.env.KEY_SECERET)
 var instance = new Razorpay({
-  key_id: 'rzp_live_Z4F87shT2a3elH',
-  key_secret: 'jM4KRf6kEAP9rIWqi4eEjWAR',
+  key_id: process.env.KEY_ID,
+  key_secret:  process.env.KEY_SECERET,
 });
 
 app.post("/create/orderId/razorpay", (req, res) => {
@@ -50,6 +51,10 @@ app.post("/api/payment/verify", (req, res) => {
     response = { signatureIsValid: "true" };
   res.send(response);
 });
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('shopapp/build'))
+}
 
 app.listen(PORT, () => {
   console.log(`app listening at http://localhost:${PORT}`);

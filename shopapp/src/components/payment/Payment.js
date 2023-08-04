@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import env from "react-dotenv";
 import { useSelector, useDispatch } from "react-redux";
 // import Razorpay from 'razorpay'
 
@@ -115,7 +116,7 @@ console.log("amt", amount)
 let orderId;
 function razorpay(totalamt, name, email, phn) {
     let options = {
-        "key": "rzp_live_Z4F87shT2a3elH", // Enter the Key ID generated from the Dashboard
+        "key": 'rzp_live_Z4F87shT2a3elH', // Enter the Key ID generated from the Dashboard
         "amount": totalamt+'00', // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Testing",
