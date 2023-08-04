@@ -16,7 +16,7 @@ console.log("amt", amount)
   async function handleBuy() {
       console.log(paymentMethod)
     if(paymentMethod == 'RazorPay') {
-        let res = await axios.post('http://localhost:4000/create/orderId/razorpay', {
+        let res = await axios.post('/create/orderId/razorpay', {
             amount : amount, 
             name: name,
             email : email,
@@ -29,7 +29,7 @@ console.log("amt", amount)
         .catch(err => console.log("err", err))
     }
     else if(paymentMethod == 'PayTm') {
-        let res = await axios.post('http://localhost:4000/create/orderId/paytm', {
+        let res = await axios.post('/create/orderId/paytm', {
             amount : amount, 
             name: name,
             email : email,
@@ -128,7 +128,7 @@ function razorpay(totalamt, name, email, phn) {
             alert(response.razorpay_order_id);
             alert(response.razorpay_signature)
             let settings = {
-                "url": "http://localhost:4000/api/payment/verify",
+                "url": "/api/payment/verify",
                 "method": "POST",
                 "timeout": 0,
                 "headers": {
